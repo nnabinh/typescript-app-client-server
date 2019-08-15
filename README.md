@@ -2,25 +2,11 @@
 Design a web application that allows employees to submit feedback toward each other's performance review. 
 - Run both client & server
 - Access localhost:3000
+<img width="1054" alt="Screen Shot 2019-08-15 at 10 54 59 PM" src="https://user-images.githubusercontent.com/10094591/63099469-20fb4c00-bfb0-11e9-8045-8a531b5079c5.png">
+<img width="446" alt="Screen Shot 2019-08-15 at 10 53 48 PM" src="https://user-images.githubusercontent.com/10094591/63099436-0f19a900-bfb0-11e9-9b50-88c38d40ab49.png">
 
 
-# common
-- yarn 1.16
-
-
-# client
-- react
-- typescript
-
-
-# server
-- node 12.1 / npm 6.9
-- overnightjs 1.6.9 (TS decorators for ExpressJS)
-- typescript 3.1
-- mongodb
-
-
-# NOTES
+# installation
 
 - To install mongodb (MacOS):
 ```
@@ -44,3 +30,18 @@ cd ./server && yarn && yarn start-dev
 ```
 cd ./client && yarn && yarn start
 ```
+
+# common
+- yarn 1.16
+
+
+# client
+- react
+- typescript
+
+
+# server
+- node 12.1 / npm 6.9
+- overnightjs 1.6.9 (TS decorators for ExpressJS)
+- typescript 3.1
+- mongodb
