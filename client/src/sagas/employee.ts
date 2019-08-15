@@ -1,39 +1,57 @@
 import { ActionType } from 'typesafe-actions';
 import { takeLatest, call, put } from 'redux-saga/effects';
-import { EmployeeActionTypes, getListSuccess } from '../actions/employee';
-import { API_ROUTES } from '../util/api';
-import { remove } from '../actions/employee';
+import { EmployeeActionTypes, getListSuccess, remove, getList, add, addSuccess, update, updateSuccess } from '../actions/employee';
+import { API_EMPLOYEE_ROUTES } from '../util/api';
 
-function* getList() {
+function* onGetList() {
   try {
-    const response = yield fetch(API_ROUTES.EMPLOYEE_LIST).then(res => res.json());
-    yield put(getListSuccess(response.employees));
+    const response = yield call(fetch, API_EMPLOYEE_ROUTES.GET_LIST);
+    const body = yield response.json();
+    yield put(getListSuccess(body.employees));
   } catch (err) {
     alert(err);
   }
 }
 
-type Test = ActionType<typeof remove>;
-function* remove(action: Test) {
+function* onRemove(action: ActionType<typeof remove>) {
   try {
-    yield call(fetch, API_ROUTES.REMOVE + action, {
+    yield call(fetch, API_EMPLOYEE_ROUTES.REMOVE + action.payload, {
       method : 'POST',
-      headers : {
-        'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
-        'Content-Type' :'multipart/form-data, application/x-www-form-urlencoded; charset=utf-8'
-      },
-      body : formData
     })
-    const response = yield call(fetch, API_ROUTES.REMOVE + , {
-      method: 'POST',
-    });;
-    yield put(getListSuccess(response.employees));
+    yield put(getList());
+  } catch (err) {
+    alert(err);
+  }
+}
+
+function* onAdd(action: ActionType<typeof add>) {
+  try {
+    const response = yield call(fetch, API_EMPLOYEE_ROUTES.ADD + action.payload, {
+      method : 'POST',
+    })
+    const body = yield response.json();
+    yield put(addSuccess(body.employee));
+  } catch (err) {
+    alert(err);
+  }
+}
+
+function* onUpdate(action: ActionType<typeof update>) {
+  try {
+    const { id, name } = action.payload;
+    const response = yield call(fetch, API_EMPLOYEE_ROUTES.UPDATE + `${id}/${name}`, {
+      method : 'POST',
+    })
+    const body = yield response.json();
+    yield put(updateSuccess(body.employee));
   } catch (err) {
     alert(err);
   }
 }
 
 export default function* employeeSagas() {
-  yield takeLatest(EmployeeActionTypes.GET_LIST, getList);
-  yield takeLatest(EmployeeActionTypes.REMOVE, getList);
+  yield takeLatest(EmployeeActionTypes.GET_LIST, onGetList);
+  yield takeLatest(EmployeeActionTypes.REMOVE, onRemove);
+  yield takeLatest(EmployeeActionTypes.ADD, onAdd);
+  yield takeLatest(EmployeeActionTypes.UPDATE, onUpdate);
 }

@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 import employee from './employee';
+import performanceReview from './performanceReview';
 
 const rootReducer = combineReducers({
   model: combineReducers({
     employee,
+    performanceReview,
   }),
 });
 

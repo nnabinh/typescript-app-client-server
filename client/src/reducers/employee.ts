@@ -21,6 +21,25 @@ const employee: Reducer<EmployeeState, EmployeeActions> = (state = initialState,
         byId: keyBy(action.payload, '_id'),
       };
     }
+    case EmployeeActionTypes.ADD_SUCCESS: {
+      return {
+        ...state,
+        allIds: [...state.allIds, action.payload._id],
+        byId: {
+          ...state.byId,
+          [action.payload._id]: action.payload,
+        },
+      };
+    }
+    case EmployeeActionTypes.UPDATE_SUCCESS: {
+      return {
+        ...state,
+        byId: {
+          ...state.byId,
+          [action.payload._id]: action.payload,
+        },
+      };
+    }
     default:
       return state;
   }

@@ -10,7 +10,6 @@ export const Header = styled.div`
 `
 
 export const Table = styled.table`
-  margin-top: 20px;
 `
 
 export const TableHeader = styled.thead`
@@ -19,4 +18,26 @@ export const TableHeader = styled.thead`
 
 export const BodyRow = styled.tr`
   line-height: 2;
+`
+
+export const AddNewEmployeeGroup = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+`
+
+export const Button = styled.button`
+  background-color: #24A0ED;
+  padding-left: 30px;
+  padding-right: 30px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
+`
+
+export const ButtonText = styled.div`
+  color: white;
+  font-size: 12px;
 `

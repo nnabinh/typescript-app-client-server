@@ -1,5 +1,6 @@
 import * as mongoose from 'mongoose';
 import Employee from './Employee';
+import PerformanceReview from './PerformanceReview';
 
 const uri: string = 'mongodb://127.0.0.1:27017/local';
 
@@ -27,4 +28,10 @@ Employee.collection.insertMany([{
   name: 'Xuatz'
 }, {
   name: 'Cody'
-}]);
+}]).then(() => {
+  PerformanceReview.collection.insertMany([{
+    score: 9,
+  }, {
+    score: 8,
+  }])
+});

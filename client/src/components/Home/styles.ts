@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const Container = styled.div`
   position: absolute;
@@ -14,7 +14,7 @@ export const Container = styled.div`
 
 export const Button = styled.button`
   background-color: blue;
-  width: 300px;
+  width: 400px;
   height: 50px;
   display: flex;
   align-items: center;

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getList } from '../../actions/employee';
+import { getList, add } from '../../actions/employee';
 import { ApplicationState } from '../../reducers';
 import EmployeeList from './EmployeeList';
 
@@ -11,6 +11,7 @@ const mapStateToProps = (state: ApplicationState) => ({
 
 const mapDispatchToProps = {
   getList,
+  add,
 };
 
 const EmployeeListContainer = connect(mapStateToProps, mapDispatchToProps)(EmployeeList);

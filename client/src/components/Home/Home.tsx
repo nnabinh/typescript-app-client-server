@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { Container, Button, Text } from './styles';
 
@@ -10,6 +10,9 @@ const Home = ({
   <Container>
     <Button onClick={() => history.push('employee-list')}>
       <Text>Go to Employee List</Text>
+    </Button>
+    <Button onClick={() => history.push('performance-review-list')}>
+      <Text>Go to Performance Review List</Text>
     </Button>
   </Container>
 );
